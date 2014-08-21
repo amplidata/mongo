@@ -1,0 +1,6 @@
+-i http://pypi.amplidata.com/ampli/dev
+pip>=1.4.1
+parcel==0.2.2
+repomgmt
+parcel-utils>=0.8.2,<0.9.0
+ampli-tool>=0.6.0

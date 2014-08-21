@@ -1,0 +1,9 @@
+{
+  "name": "mongo-ampli",
+  "version": "2.6.3",
+  "dependencies": {
+    "packages": [
+      {"name": "libssl1.0.0", "source_type": "system", "type": "runtime"}
+    ]
+  }
+}
