@@ -7,7 +7,7 @@ from ampli_tool.models import Metadata
 from ampli_tool.commands import gen_build_info
 from fabric.decorators import task
 from fabric.operations import local
-from parcel_utils.custom import CustomUbuntu
+from parcel_utils.custom import CustomUbuntu, metadata_from_build_info
 from parcel_utils.tasks import (
     upload_debian_package, build_package_from_dir,
     setup_ubuntu_builder, teardown_builder,
@@ -21,11 +21,7 @@ def build(tarball_path='.'):
     package_config=load_package_config('../package_config.json')
     with vm_connection_settings():
         build_info = gen_build_info('.', package_config=package_config)
-        metadata = Metadata(build_info.package_config.name,
-                            build_info.package_config.version,
-                            revision=build_info.revision,
-                            short_description=build_info.package_config.short_description,
-                            dependencies=build_info.package_config.dependencies)
+        metadata = metadata_from_build_info(build_info)
         metadata.vendor = 'mongohg'
 
         bin_dir = 'usr/bin'
