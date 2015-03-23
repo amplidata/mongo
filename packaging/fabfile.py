@@ -33,7 +33,7 @@ def build(tarball_path='.'):
         
         local('tar xf %s' % tarball_path)
         extracted_dir = os.path.basename(tarball_path).replace('.tar.gz', '')
-        for bin_ in ['mongo', 'mongod', 'mongoimport', 'mongodump', 'mongoimport', 'mongorestore', 'mongostat']:
+        for bin_ in ['mongo', 'mongod']:
             local('cp %s/bin/%s %s/%s' % (extracted_dir, bin_, bin_dir, bin_))
 
         arch = CustomUbuntu()
